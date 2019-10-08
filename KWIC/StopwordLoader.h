@@ -1,13 +1,18 @@
-#ifndef __STOPWORDLOADER_H__
-#define __STOPWORDLOADER_H__
+#ifndef __StopwordLoader_H__
+#define __StopwordLoader_H__
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
-void getStopwords(vector<string>& stopwords);
-void printStopwords(vector<string>& stopwords);
+class StopWords{
+    public:
+        list<string> stopwords;
 
+    private:
+        void GetStopWords();
+        void AddStopWord();
 
-
+};
 
 #endif

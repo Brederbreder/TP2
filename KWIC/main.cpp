@@ -1,17 +1,12 @@
-#include <bits/stdc++.h>
+#include "Input.h"
 #include "StopwordLoader.h"
-#include "StringManager.h"
 
+#include <bits/std=c++.h>
 using namespace std;
 
 int main(){
+    IP = new Input();
+    SW = new StopWords();
 
-    vector<string> stopwords;
-    vector<string> titles;
-
-    getStopwords(stopwords);
-    printStopwords(stopwords);
-
-    getTitles(titles);
-    printTitles(titles);
+    
 }
