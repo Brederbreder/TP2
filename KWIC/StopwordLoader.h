@@ -7,12 +7,11 @@ using namespace std;
 
 class StopWords{
     public:
-        list<string> stopwords;
+    	vector<string> stopwords;
 
-    private:
         void GetStopWords();
         void AddStopWord();
-
+        void PrintStopWords();
 };
 
 #endif

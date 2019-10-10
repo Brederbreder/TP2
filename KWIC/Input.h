@@ -1,17 +1,18 @@
 #ifndef __Input_H__
 #define __Input_H__
 
+#include "StopwordLoader.h"
 #include <bits/stdc++.h>
 
 using namespace std;
 
 class Input{
-    public:
-        list<string> titles;
-    
-    private:
-        void GetTitles();
-        void Filter(list<string> stopwords);
+	public:
+	    vector<string> titles;
+		vector<string> shifts;
+
+    	void GetTitles();
+    	void PrintTitles();  
 };
 
 #endif
