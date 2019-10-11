@@ -26,7 +26,10 @@ void KeyWord::Filter(StopWords& Stopword){
 	auto kw = this->keywords;
 
 	for(unsigned int i = 0; i < kw.size(); i++){
-		if(find(sw.begin(), sw.end(), kw[i].second) != sw.end()){
+		string s = kw[i].second;
+		s[0] = tolower(s[0]);
+		
+		if(find(sw.begin(), sw.end(), s) != sw.end()){
 			kw.erase(kw.begin() + i);
 			i--;
 		}
