@@ -15,6 +15,8 @@ void Input::GetTitles(){
         this->titles.push_back(line);
         this->shifts.push_back(line);
     }
+
+    file.close();
 }
 
 void Input::PrintTitles(){

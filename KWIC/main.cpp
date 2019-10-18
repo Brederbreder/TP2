@@ -56,9 +56,11 @@ int main(){
     			break;
     	case 6:
     			cout << "Obrigado, volte sempre." << endl;
-    			exit(-1);
+    			break;
     	default:
     			cout << "Opcao invalida, tente novamente!" << endl;
     			main();		
     }
+
+	return 0;
 }
