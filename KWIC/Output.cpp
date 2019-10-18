@@ -40,8 +40,14 @@ void Output::FindTitles(Input& Input){
 		size_t barra = titles.find('/');
 
 		string word = titles.substr(barra+1, titles.length() - 1);
+		string word_2 = word;
 
-		if(word == key){
+
+		if(word_2[0] >= 65 || word_2[0] <= 90){
+			word_2[0] += 32;
+		}
+
+		if(word == key || word_2 == key){
 			cout << count << ". " <<  Input.titles[outtitles[i].second] << endl;
 			count++;
 		}

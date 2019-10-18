@@ -46,6 +46,6 @@ void KeyWord::PrintKeywords(){
     }
 
     for(string s:all_keys){
-    	cout << s << endl;
+    	cout << s << "->" <<  << endl;
     }
 }
