@@ -15,7 +15,7 @@ class DataStorageManager{
                 this->words();
             }else{
                 throw std::invalid_argument("Message not understoood\n");
-            }/ std::regex e("[\\w_]+");
+            }
             return this->list_of_words;
         }
 
