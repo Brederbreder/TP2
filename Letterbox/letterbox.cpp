@@ -6,11 +6,6 @@
 #include <list>
 #include <map>
 
-
-// DataStorageManager x = DataStorageManager();
-// DataStorageManager *x = new DataStorageManager();
-// DataStorageManager x();
-
 class DataStorageManager{
     public:
         std::list<std::string> dispatch(const std::vector<std::string> &message){
@@ -20,18 +15,18 @@ class DataStorageManager{
                 this->words();
             }else{
                 throw std::invalid_argument("Message not understoood\n");
-            }
+            }/ std::regex e("[\\w_]+");
             return this->list_of_words;
         }
 
         void init(const std::string &path){
-            // std::regex e("[\\w_]+");
             std::fstream in(path);
             std::string x;
             while (in >> x){
                 this->data += x;
                 this->data += ' ';    
             }
+
             for(unsigned int i=0; i<this->data.length(); i++){
                 if((this->data[i] < 'a' || this->data[i] > 'z') && (this->data[i] < 'A' || this->data[i] > 'Z')){
                     this->data[i] = ' ';
@@ -43,7 +38,6 @@ class DataStorageManager{
                 return std::tolower(c); 
             });
 
-
             for(unsigned int i=0; i<this->data.size(); i++){
                 if(this->data[i] >= 'a' && this->data[i] <= 'z'){
                     dataOut += data[i];
@@ -52,9 +46,6 @@ class DataStorageManager{
                     dataOut += data[i];
                 }
             }
-            // for (std::sregex_iterator it(data.begin(), data.end(), e), it_end; it != it_end; ++it) {
-            //     std::cout << (*it)[0] << "\n";
-            // }
         }
 
         std::list<std::string> words(){
@@ -70,7 +61,6 @@ class DataStorageManager{
             }
             return list_of_words;
         }
-
 
     private:
         std::string data;
@@ -129,7 +119,6 @@ class StopWordManager{
 
 class WordFrequencyManager{
     public:
-
         std::map<std::string, int> word_freq;
 
         void dispatch(const std::vector<std::string> &message){
@@ -144,8 +133,6 @@ class WordFrequencyManager{
         void increment_cout(std::string &word){
             word_freq[word] += 1;
         }
-
-    private:
 };
 
 class WordFrequencyController{
@@ -191,7 +178,6 @@ class WordFrequencyController{
         WordFrequencyManager wfm;
         StopWordManager swm;
         DataStorageManager dsm;
-        
 };
 
 int main(const int argc, const char **argv){
