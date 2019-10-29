@@ -97,6 +97,7 @@ class StopWordManager{
                     aux += x[i];
                 }
             }
+            in.close();
         }
 
         bool is_stop_word(std::string &word){
