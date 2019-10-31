@@ -6,7 +6,7 @@ How to compile the program:
 g++ -o exec -std=c++11 -g -pedantic -Wall letterbox.cpp 
 
 How to execute the program:
-./exec ./pride_and_prejudice.txt
+./exec ./pride-and-prejudice.txt
 
 Letterbox é um estilo de programacao em que dividimos o programa em modulos(classes)
 e para fazer a comunicação entre as classes(troca de mensagens), envia-se um vetor de strings
