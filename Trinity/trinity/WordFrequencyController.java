@@ -31,10 +31,11 @@ public class WordFrequencyController {
 
 	public void run() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Next file: ");
+		System.out.println("Next file: (Type 'END' to finish)" );
 		String file = "";
 		while (sc.hasNext()) {
 			file = sc.next();
+			if (file.equalsIgnoreCase("end")) break;
 			this.model.update(file);
 			this.view.render();
 			System.out.println("Next file: ");
