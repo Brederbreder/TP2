@@ -170,8 +170,21 @@ class WordFrequencyController{
                 }
             }
 
+            std::vector<std::pair<int, std::string>> vec;
+
             for(auto p:this->wfm.word_freq){
-                std::cout << p.first << " - " << p.second << "\n";
+                vec.push_back(make_pair(p.second, p.first));
+            }
+
+            sort(vec.begin(), vec.end());
+            reverse(vec.begin(), vec.end());
+
+            // for(auto p:vec){
+            //     std::cout << p.second << " - " << p.first << "\n";
+            // }
+
+            for(int i=0; i<25; i++){
+                std::cout << vec[i].second << " - " << vec[i].first << "\n";
             }
         }
         
