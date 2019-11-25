@@ -121,30 +121,42 @@ class StopWordManager{
 class WordFrequencyManager{
     public:
 
-        std::map<std::string, int> dispatch(const std::vector<std::string> &message){
-            std::map<std::string, int> x;
+        std::vector<std::pair<int, std::string>> dispatch(const std::vector<std::string> &message){
+            std::vector<std::pair<int, std::string>> x;
             if(!message[0].compare("increment_count")){
                 auto s = message[1];
                 this->increment_count(s);
             }else if(!message[0].compare("get_result")){
                 auto s = message[0];
                 x = this->get_result(s);
+            }else if(!message[0].compare("sorted")){
+                this->sorted();
             }else{
                 throw std::invalid_argument("Message not understoood\n");
             }
             return x;
         }
 
-        std::map<std::string, int> get_result(const std::string){
-            return this->word_freq;
+        std::vector<std::pair<int, std::string>> get_result(const std::string){
+            return this->vec;
         }
 
         void increment_count(std::string &word){
             this->word_freq[word] += 1;
         }
 
+        void sorted(){
+            for(auto p:this->word_freq){
+                this->vec.push_back(make_pair(p.second, p.first));
+            }
+
+            std::sort(this->vec.begin(),this->vec.end());
+            std::reverse(this->vec.begin(), this->vec.end());
+        }
+
     private:
         std::map<std::string, int> word_freq;
+        std::vector<std::pair<int, std::string>> vec;
 };
 
 class WordFrequencyController{
@@ -182,19 +194,14 @@ class WordFrequencyController{
                 }
             }  
 
-            word_aux = this->wfm.dispatch({"get_result"});        
+            this->wfm.dispatch({"sorted"});
 
-            std::vector<std::pair<int, std::string>> vec;
+            std::vector<std::pair<int, std::string>> vec_result;
 
-            for(auto p:word_aux){
-                vec.push_back(make_pair(p.second, p.first));
-            }
-
-            std::sort(vec.begin(), vec.end());
-            std::reverse(vec.begin(), vec.end());
+            vec_result = this->wfm.dispatch({"get_result"});        
 
             for(int i=0; i<25; i++){
-                std::cout << vec[i].second << " - " << vec[i].first << "\n";
+                std::cout << vec_result[i].second << " - " << vec_result[i].first << "\n";
             }
         }
         
